@@ -26,7 +26,16 @@ for a in src_dir:
     for b in subDirs:
         subDir = dir + '\\' + b
         #print(os.listdir(subDir))
-        shutil.copyfile(subDir, dir)
+        files = os.listdir(subDir)
+        for c in files:
+            file = subDir + '\\' + c
+            shutil.copy2(file, dir)
+ 
+
+#renaming files
+for a in src_dir:
+    dir = os.getcwd() + '\\' + a
+    print(files)
 
 
 
