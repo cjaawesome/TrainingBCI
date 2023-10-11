@@ -5,6 +5,7 @@ from os import path
 
 src_dir = os.listdir(os.getcwd())
 
+#mapping out the filesystem and removing non directories
 tempInd = 0
 temp = []
 for a in src_dir:
@@ -17,11 +18,17 @@ for a in temp:
     src_dir.remove(a)
 del temp
 
-print(src_dir)
 
+#copying files
 for a in src_dir:
     dir = os.getcwd() + '\\' + a
-    print(dir + '\n')
-    print(os.listdir(dir) )
-    print('\n')
+    subDirs = os.listdir(dir)
+    for b in subDirs:
+        subDir = dir + '\\' + b
+        #print(os.listdir(subDir))
+        shutil.copyfile(subDir, dir)
+
+
+
+
 
