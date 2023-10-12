@@ -1,9 +1,23 @@
 import shutil
 import os
 import pathlib
+import random
 from os import path
 
 src_dir = os.listdir(os.getcwd())
+
+def isFile(st):
+    temp = False
+    for a in st:
+        if a == '.':
+            temp = True
+    return temp
+    
+              
+
+    
+
+
 
 #mapping out the filesystem and removing non directories
 tempInd = 0
@@ -32,10 +46,31 @@ for a in src_dir:
             shutil.copy2(file, dir)
  
 
-#renaming files
+#renaming files (doesn't work)
 for a in src_dir:
     dir = os.getcwd() + '\\' + a
-    print(files)
+    subDirs = os.listdir(dir)
+    temp = []
+    for b in subDirs:
+        subDirs = dir + '\\' + b
+        if (isFile(subDir)):
+            tempLoop = True
+            attemp = 1
+            while tempLoop:
+                attempt = random.randrange(30)
+                tempLoop = False
+                for c in temp:
+                    if c == attempt:
+                        tempLoop = True
+                if tempLoop == False:
+                    temp.append(attempt)
+            os.rename(subDirs, attempt + '.txt')
+
+
+            
+
+    
+    
 
 
 
