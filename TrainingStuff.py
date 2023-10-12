@@ -32,8 +32,12 @@ for a in temp:
     src_dir.remove(a)
 del temp
 
-
+#f = open("demofile2.txt", "a")
+#f.write("Now the file has more content!")
+#f.close()
+#os.rename("demofile2.txt", 'bbbbbballlls.txt')
 #copying files
+
 for a in src_dir:
     dir = os.getcwd() + '\\' + a
     subDirs = os.listdir(dir)
@@ -44,27 +48,29 @@ for a in src_dir:
         for c in files:
             file = subDir + '\\' + c
             shutil.copy2(file, dir)
- 
+
 
 #renaming files (doesn't work)
+
 for a in src_dir:
     dir = os.getcwd() + '\\' + a
-    subDirs = os.listdir(dir)
-    temp = []
-    for b in subDirs:
+    subDir = os.listdir(dir)
+    temp = [0]
+    for b in subDir:
         subDirs = dir + '\\' + b
-        if (isFile(subDir)):
+        if (isFile(subDirs)):
             tempLoop = True
             attemp = 1
             while tempLoop:
-                attempt = random.randrange(30)
+                attempt = random.randrange(31)
                 tempLoop = False
                 for c in temp:
                     if c == attempt:
                         tempLoop = True
                 if tempLoop == False:
                     temp.append(attempt)
-            os.rename(subDirs, attempt + '.txt')
+            print(a + "\\" + b)
+            os.rename(a + '\\' + b, a + '\\' + str(attempt) + '.txt')
 
 
             
