@@ -3,6 +3,7 @@ import os
 import pathlib
 import random
 from os import path
+import datetime
 
 src_dir = os.listdir(os.getcwd())
 
@@ -37,8 +38,9 @@ del temp
 #f.close()
 #os.rename("demofile2.txt", 'bbbbbballlls.txt')
 #copying files
-
+countArray = []
 for a in src_dir:
+    temp = 0
     dir = os.getcwd() + '\\' + a
     subDirs = os.listdir(dir)
     for b in subDirs:
@@ -46,12 +48,16 @@ for a in src_dir:
         #print(os.listdir(subDir))
         files = os.listdir(subDir)
         for c in files:
+            temp += 1
             file = subDir + '\\' + c
             shutil.copy2(file, dir)
+    countArray.append(temp)
+
 
 
 #renaming files (doesn't work)
 
+indexCurr = 0
 for a in src_dir:
     dir = os.getcwd() + '\\' + a
     subDir = os.listdir(dir)
@@ -62,7 +68,7 @@ for a in src_dir:
             tempLoop = True
             attemp = 1
             while tempLoop:
-                attempt = random.randrange(31)
+                attempt = random.randrange(countArray[indexCurr] + 1)
                 tempLoop = False
                 for c in temp:
                     if c == attempt:
@@ -71,6 +77,7 @@ for a in src_dir:
                     temp.append(attempt)
             print(a + "\\" + b)
             os.rename(a + '\\' + b, a + '\\' + str(attempt) + '.txt')
+    indexCurr += 1
 
 
             
